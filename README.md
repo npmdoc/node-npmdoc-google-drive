@@ -1,9 +1,14 @@
-# api documentation for  [google-drive (v0.0.7)](https://github.com/niftylettuce/node-google-drive)  [![npm package](https://img.shields.io/npm/v/npmdoc-google-drive.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-google-drive) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-google-drive.svg)](https://travis-ci.org/npmdoc/node-npmdoc-google-drive)
+# npmdoc-google-drive
+
+#### api documentation for  [google-drive (v0.0.7)](https://github.com/niftylettuce/node-google-drive)  [![npm package](https://img.shields.io/npm/v/npmdoc-google-drive.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-google-drive) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-google-drive.svg)](https://travis-ci.org/npmdoc/node-npmdoc-google-drive)
+
 #### Node.js library for accessing Google Drive's API at <https://developers.google.com/drive/v2/reference>
 
-[![NPM](https://nodei.co/npm/google-drive.png?downloads=true)](https://www.npmjs.com/package/google-drive)
+[![NPM](https://nodei.co/npm/google-drive.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/google-drive)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-google-drive/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-google-drive_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-google-drive/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-google-drive/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-google-drive/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-google-drive/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-google-drive/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-google-drive/build/screenCapture.npmPackageListing.svg)
 
@@ -17,24 +22,20 @@
 
 {
     "author": {
-        "name": "Nick Baugh",
-        "email": "niftylettuce@gmail.com"
+        "name": "Nick Baugh"
     },
     "bugs": {
         "url": "https://github.com/niftylettuce/node-google-drive/issues"
     },
     "contributors": [
         {
-            "name": "Nick Baugh",
-            "email": "niftylettuce@gmail.com"
+            "name": "Nick Baugh"
         },
         {
-            "name": "headlessme",
-            "email": "hello@coggle.it"
+            "name": "headlessme"
         },
         {
-            "name": "Zlati Pehlivanov",
-            "email": "zlati.pehlivanov@gmail.com"
+            "name": "Zlati Pehlivanov"
         }
     ],
     "dependencies": {
@@ -69,13 +70,11 @@
     "main": "lib/main.js",
     "maintainers": [
         {
-            "name": "niftylettuce",
-            "email": "nicholasbaugh@gmail.com"
+            "name": "niftylettuce"
         }
     ],
     "name": "google-drive",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/niftylettuce/node-google-drive.git"
@@ -86,16 +85,6 @@
     "version": "0.0.7"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module google-drive](#apidoc.module.google-drive)
-
-
-
-# <a name="apidoc.module.google-drive"></a>[module google-drive](#apidoc.module.google-drive)
 
 
 
