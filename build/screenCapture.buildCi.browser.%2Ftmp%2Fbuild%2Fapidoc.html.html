@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/niftylettuce/node-google-drive"
-
-    >google-drive (v0.0.7)</a>
+    <a href="https://github.com/niftylettuce/node-google-drive">google-drive (v0.0.7)</a>
 </h1>
-<h4>Node.js library for accessing Google Drive's API at <https://developers.google.com/drive/v2/reference></h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<h4>Node.js library for accessing Google Drive's API at <https: developers.google.com="" drive="" v2="" reference=""></https:></h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.google-drive">module google-drive</a><ol>
 
@@ -89,7 +82,7 @@
 
   var defaults = {
     headers: {
-      Authorization: &#x22;Bearer &#x22; + access_token
+      Authorization: "Bearer " + access_token
     },
     qs: {}
   }
@@ -98,22 +91,22 @@
     if (arguments.callee.length == 1) multipart = true;
     var options = defaults;
     options.qs = extend(options.qs, p.params);
-    if (multipart &#x26;&#x26; p.meta) {
+    if (multipart &amp;&amp; p.meta) {
       options.multipart = [{
-        &#x27;content-type&#x27;: &#x27;application/json&#x27;,
+        'content-type': 'application/json',
         body: JSON.stringify(p.meta)
       }];
     } else  {
-      options.headers[&#x27;Content-Type&#x27;] = &#x27;application/json&#x27;;
+      options.headers['Content-Type'] = 'application/json';
       options.body = JSON.stringify(p.meta);
     }
     return request.defaults(options);
   }
 
   function extract_params(meta, params, cb) {
-    if ((!cb) &#x26;&#x26; (!params) &#x26;&#x26; (typeof meta === &#x27;function&#x27; ))
+    if ((!cb) &amp;&amp; (!params) &amp;&amp; (typeof meta === 'function' ))
       return {meta:{}, params: {}, cb: meta};
-    else if ((!cb) &#x26;&#x26; (typeof params === &#x27;function&#x27; ))
+    else if ((!cb) &amp;&amp; (typeof params === 'function' ))
       return {meta:meta, params: {}, cb: params};
     else return {meta: meta, params:params, cb: cb};
   }
@@ -125,66 +118,66 @@
     return {
       list: function(params, cb) {
         var p = extract_params(undefined, params, cb);
-        return make_request(p).get(base_uri + &#x27;/files&#x27;, p.cb);
+        return make_request(p).get(base_uri + '/files', p.cb);
       },
       insert: function(meta, params, cb) {
         var p = extract_params(meta, params, cb);
-        return make_request(p).post(base_uri + &#x27;/files&#x27;, p.cb);
+        return make_request(p).post(base_uri + '/files', p.cb);
       },
       get: function(params, cb) {
         var p = extract_params(undefined, params, cb);
-        return make_request(p).get(base_uri + &#x27;/files/&#x27; + fileId, p.cb);
+        return make_request(p).get(base_uri + '/files/' + fileId, p.cb);
       },
       patch: function(meta, params, cb) {
         var p = extract_params(meta, params, cb);
-        return make_request(p).patch(base_uri + &#x27;/files/&#x27; + fileId, p.cb);
+        return make_request(p).patch(base_uri + '/files/' + fileId, p.cb);
       },
       update: function(meta, params, cb) {
         var p = extract_params(meta, params, cb);
-        return make_request(p).put(base_uri + &#x27;/files/&#x27; + fileId, p.cb);
+        return make_request(p).put(base_uri + '/files/' + fileId, p.cb);
       },
       copy: function(meta, params, cb) {
         var p = extract_params(meta, params, cb);
-        return make_request(p).post(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/copy&#x27;, p.cb);
+        return make_request(p).post(base_uri + '/files/' + fileId + '/copy', p.cb);
       },
       del: function(cb) {
         var p = extract_params(undefined, undefined, cb);
-        return make_request(p).del(base_uri + &#x27;/files/&#x27; + fileId, p.cb);
+        return make_request(p).del(base_uri + '/files/' + fileId, p.cb);
       },
       touch: function(cb) {
         var p = extract_params(undefined, undefined, cb);
-        return make_request(p).post(base_uri + &#x27;/files/&#x27; + fileId, p.cb);
+        return make_request(p).post(base_uri + '/files/' + fileId, p.cb);
       },
       trash: function(cb) {
         var p = extract_params(undefined, undefined, cb);
-        return make_request(p).post(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/trash&#x27;, p.cb);
+        return make_request(p).post(base_uri + '/files/' + fileId + '/trash', p.cb);
       },
       untrash: function(cb) {
         var p = extract_params(undefined, undefined, cb);
-        return make_request(p).post(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/untrash&#x27;, p.cb);
+        return make_request(p).post(base_uri + '/files/' + fileId + '/untrash', p.cb);
       },
 
       permissions: function(permId) {
         return {
           list: function(params, cb) {
             var p = extract_params(undefined, params, cb);
-            return make_request(p).get(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/permissions&#x27;, p.cb);
+            return make_request(p).get(base_uri + '/files/' + fileId + '/permissions', p.cb);
           },
           patch: function(meta, params, cb) {
             var p = extract_params(meta, params, cb);
-            return make_request(p).patch(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/permissions/&#x27; + permId, p.cb);
+            return make_request(p).patch(base_uri + '/files/' + fileId + '/permissions/' + permId, p.cb);
           },
           update: function(meta, params, cb) {
             var p = extract_params(meta, params, cb);
-            return make_request(p).put(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/permissions/&#x27; + permId, p.cb);
+            return make_request(p).put(base_uri + '/files/' + fileId + '/permissions/' + permId, p.cb);
           },
           insert: function(meta, params, cb) {
             var p = extract_params(meta, params, cb);
-            return make_request(p).post(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/permissions&#x27;, p.cb);
+            return make_request(p).post(base_uri + '/files/' + fileId + '/permissions', p.cb);
           },
           getIdForEmail: function(email, params, cb) {
             var p = extract_params(undefined, params, cb);
-            return make_request(p).get(base_uri + &#x27;/permissionIds/&#x27; + email, p.cb);
+            return make_request(p).get(base_uri + '/permissionIds/' + email, p.cb);
           }
         }
       }
@@ -209,3 +202,4 @@
     ]
 </div>
 </div>
+</body></html>

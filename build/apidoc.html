@@ -61,12 +61,145 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.google-drive">module google-drive</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.google-drive.google-drive">
+            function <span class="apidocSignatureSpan"></span>google-drive
+            <span class="apidocSignatureSpan">(access_token)</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.google-drive" id="apidoc.module.google-drive">module google-drive</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.google-drive.google-drive" id="apidoc.element.google-drive.google-drive">
+        function <span class="apidocSignatureSpan"></span>google-drive
+        <span class="apidocSignatureSpan">(access_token)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">google-drive = function (access_token) {
+
+  var defaults = {
+    headers: {
+      Authorization: &#x22;Bearer &#x22; + access_token
+    },
+    qs: {}
+  }
+
+  function make_request(p, multipart) {
+    if (arguments.callee.length == 1) multipart = true;
+    var options = defaults;
+    options.qs = extend(options.qs, p.params);
+    if (multipart &#x26;&#x26; p.meta) {
+      options.multipart = [{
+        &#x27;content-type&#x27;: &#x27;application/json&#x27;,
+        body: JSON.stringify(p.meta)
+      }];
+    } else  {
+      options.headers[&#x27;Content-Type&#x27;] = &#x27;application/json&#x27;;
+      options.body = JSON.stringify(p.meta);
+    }
+    return request.defaults(options);
+  }
+
+  function extract_params(meta, params, cb) {
+    if ((!cb) &#x26;&#x26; (!params) &#x26;&#x26; (typeof meta === &#x27;function&#x27; ))
+      return {meta:{}, params: {}, cb: meta};
+    else if ((!cb) &#x26;&#x26; (typeof params === &#x27;function&#x27; ))
+      return {meta:meta, params: {}, cb: params};
+    else return {meta: meta, params:params, cb: cb};
+  }
+
+  var resources = {}
+
+  resources.files = function(fileId) {
+
+    return {
+      list: function(params, cb) {
+        var p = extract_params(undefined, params, cb);
+        return make_request(p).get(base_uri + &#x27;/files&#x27;, p.cb);
+      },
+      insert: function(meta, params, cb) {
+        var p = extract_params(meta, params, cb);
+        return make_request(p).post(base_uri + &#x27;/files&#x27;, p.cb);
+      },
+      get: function(params, cb) {
+        var p = extract_params(undefined, params, cb);
+        return make_request(p).get(base_uri + &#x27;/files/&#x27; + fileId, p.cb);
+      },
+      patch: function(meta, params, cb) {
+        var p = extract_params(meta, params, cb);
+        return make_request(p).patch(base_uri + &#x27;/files/&#x27; + fileId, p.cb);
+      },
+      update: function(meta, params, cb) {
+        var p = extract_params(meta, params, cb);
+        return make_request(p).put(base_uri + &#x27;/files/&#x27; + fileId, p.cb);
+      },
+      copy: function(meta, params, cb) {
+        var p = extract_params(meta, params, cb);
+        return make_request(p).post(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/copy&#x27;, p.cb);
+      },
+      del: function(cb) {
+        var p = extract_params(undefined, undefined, cb);
+        return make_request(p).del(base_uri + &#x27;/files/&#x27; + fileId, p.cb);
+      },
+      touch: function(cb) {
+        var p = extract_params(undefined, undefined, cb);
+        return make_request(p).post(base_uri + &#x27;/files/&#x27; + fileId, p.cb);
+      },
+      trash: function(cb) {
+        var p = extract_params(undefined, undefined, cb);
+        return make_request(p).post(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/trash&#x27;, p.cb);
+      },
+      untrash: function(cb) {
+        var p = extract_params(undefined, undefined, cb);
+        return make_request(p).post(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/untrash&#x27;, p.cb);
+      },
+
+      permissions: function(permId) {
+        return {
+          list: function(params, cb) {
+            var p = extract_params(undefined, params, cb);
+            return make_request(p).get(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/permissions&#x27;, p.cb);
+          },
+          patch: function(meta, params, cb) {
+            var p = extract_params(meta, params, cb);
+            return make_request(p).patch(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/permissions/&#x27; + permId, p.cb);
+          },
+          update: function(meta, params, cb) {
+            var p = extract_params(meta, params, cb);
+            return make_request(p).put(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/permissions/&#x27; + permId, p.cb);
+          },
+          insert: function(meta, params, cb) {
+            var p = extract_params(meta, params, cb);
+            return make_request(p).post(base_uri + &#x27;/files/&#x27; + fileId + &#x27;/permissions&#x27;, p.cb);
+          },
+          getIdForEmail: function(email, params, cb) {
+            var p = extract_params(undefined, params, cb);
+            return make_request(p).get(base_uri + &#x27;/permissionIds/&#x27; + email, p.cb);
+          }
+        }
+      }
+    }
+  }
+
+	/*
+		Changes
+		For Changes Resource details, see below about Resource representations.
+		Method	HTTP request	Description
+		URIs relative to https://www.googleapis.com/drive/v2, unless otherwise noted
+		g ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 </div>
 
